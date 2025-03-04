@@ -1,0 +1,11 @@
+<div class="book-list">
+  <h2>Book List</h2>
+  <ul>
+    <li *ngFor="let book of books">
+      <strong>{{ book.name }}</strong> by {{ book.author }}
+    </li>
+  </ul>
+
+  <!-- Button to navigate to the Add Book page -->
+  <button (click)="goToAddPage()">Add Book</button>
+</div>
