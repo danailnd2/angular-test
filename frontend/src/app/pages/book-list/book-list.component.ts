@@ -3,6 +3,7 @@ import { BookService } from '../../book.service';
 import { Book } from '../../book.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Needed for ngFor
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-book-list',
@@ -13,14 +14,23 @@ import { CommonModule } from '@angular/common'; // Needed for ngFor
 })
 export class BookListComponent implements OnInit {
   books: Book[] = [];
+  private booksSubscription: Subscription | undefined;
 
   constructor(private bookService: BookService, private router: Router) {}
 
   ngOnInit(): void {
-    this.books = this.bookService.getBooks();
+    this.booksSubscription = this.bookService.getBooks().subscribe((books) => {
+      this.books = books;
+    });
+  }
+
+  ngOnDestroy(): void {
+    if (this.booksSubscription) {
+      this.booksSubscription.unsubscribe();
+    }
   }
 
   goToAddPage(): void {
-    this.router.navigate(['/add']); // Navigate to the add book page
+    this.router.navigate(['/add']);
   }
 }

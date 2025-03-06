@@ -1,6 +1,8 @@
 export interface Book {
-  name: string;
+  title: string;
   author: string;
-  numberOfPages: number;
-  hasPictures: boolean;
+  pageDetails: {
+    numberOfPages: number;
+    hasPicture: boolean;
+  };
 }

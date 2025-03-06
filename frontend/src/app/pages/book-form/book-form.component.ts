@@ -4,10 +4,24 @@ import { Book } from '../../book.model';
 import { Router } from '@angular/router'; // Import Router for navigation
 import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
 
+// Angular Material Modules
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card'; // Import CommonModule for ngIf and ngFor
+
 @Component({
   selector: 'app-book-form',
   standalone: true,
-  imports: [FormsModule], // Import FormsModule here for ngModel
+  imports: [
+    FormsModule, // Import FormsModule for ngModel
+    MatInputModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    CommonModule,
+    MatCardModule,
+  ],
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.scss'],
 })
@@ -24,25 +38,36 @@ export class BookFormComponent {
       this.bookName &&
       this.bookAuthor &&
       this.bookPages &&
-      this.bookHasPictures
+      this.bookHasPictures !== undefined
     ) {
       const newBook: Book = {
-        name: this.bookName,
+        title: this.bookName,
         author: this.bookAuthor,
-        numberOfPages: this.bookPages,
-        hasPictures: this.bookHasPictures,
+        pageDetails: {
+          numberOfPages: this.bookPages,
+          hasPicture: this.bookHasPictures,
+        },
       };
-      this.bookService.addBook(newBook);
-      this.bookName = '';
-      this.bookAuthor = '';
-      this.bookPages = 0;
-      this.bookHasPictures = false;
 
-      this.router.navigate(['/']);
+      this.bookService.addBook(newBook).subscribe({
+        next: (response) => {
+          console.log('Book added successfully:', response);
+          this.bookName = '';
+          this.bookAuthor = '';
+          this.bookPages = 0;
+          this.bookHasPictures = false;
+
+          // Navigate to another page
+          this.router.navigate(['/']);
+        },
+        error: (error) => {
+          console.error('Error adding book:', error);
+        },
+      });
     }
   }
 
   goBack() {
-    this.router.navigate(['/']); // Navigate to the main page
+    this.router.navigate(['/']);
   }
 }
