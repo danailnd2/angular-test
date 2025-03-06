@@ -18,6 +18,21 @@
       name="bookAuthor"
       required
     />
+    <label for="bookPages">Number of Pages:</label>
+    <input
+      type="text"
+      id="bookPages"
+      [(ngModel)]="bookPages"
+      name="bookPages"
+      required
+    />
+    <label for="bookHasPictures">Has pictures:</label>
+    <input
+      type="checkbox"
+      id="bookHasPictures"
+      [(ngModel)]="bookHasPictures"
+      name="bookHasPictures"
+    />
 
     <button type="submit">Add Book</button>
   </form>

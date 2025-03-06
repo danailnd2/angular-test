@@ -14,19 +14,31 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
 export class BookFormComponent {
   bookName: string = '';
   bookAuthor: string = '';
+  bookPages: number = 0;
+  bookHasPictures: boolean = false;
 
   constructor(private bookService: BookService, private router: Router) {}
 
   addBook() {
-    if (this.bookName && this.bookAuthor) {
+    if (
+      this.bookName &&
+      this.bookAuthor &&
+      this.bookPages &&
+      this.bookHasPictures
+    ) {
       const newBook: Book = {
         name: this.bookName,
         author: this.bookAuthor,
+        numberOfPages: this.bookPages,
+        hasPictures: this.bookHasPictures,
       };
       this.bookService.addBook(newBook);
-      this.bookName = ''; // Clear the input fields
+      this.bookName = '';
       this.bookAuthor = '';
-      this.router.navigate(['/']); // Automatically navigate back to the Book List
+      this.bookPages = 0;
+      this.bookHasPictures = false;
+
+      this.router.navigate(['/']);
     }
   }
 
