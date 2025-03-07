@@ -45,4 +45,8 @@ export class BookListComponent implements OnInit {
   goToAddPage(): void {
     this.router.navigate(['/add']);
   }
+
+  onRowClicked(book: Book): void {
+    console.log(book);
+  }
 }

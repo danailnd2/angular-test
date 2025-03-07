@@ -1,25 +1,77 @@
 .book-list {
   display: flex;
-  flex-direction: column; /* Align content vertically */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
 }
 
 .book-form {
-  margin-bottom: 20px; /* Space between the form and the button */
-  width: 40%; /* Set the desired width of the form */
-  max-width: 900px; /* Optional: Set max width to avoid too wide */
+  margin-bottom: 15px;
+  width: 60%; /* Increase width for a better table layout */
+  max-width: 800px;
   background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for a lifted effect */
-  border-radius: 8px; /* Rounded corners for the "paper" effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
   display: flex;
-  flex-direction: column; /* Ensure that the content is aligned vertically */
+  flex-direction: column;
+  padding: 16px; /* Add padding for better spacing */
 }
 
 .button {
-  margin-top: 20px; /* Space between the form and the button */
-  width: 40%; /* Same width as the form */
-  max-width: 900px; /* Match the form's max width */
-  align-self: center; /* Center the button horizontally */
+  margin-top: 20px;
+  width: 40%;
+  max-width: 900px;
+  align-self: center;
+}
+
+/* Modern Table Styles */
+mat-table {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: white;
+}
+
+/* Header styling */
+mat-header-row {
+  background-color: #f8f9fa; /* Light gray background */
+  font-weight: bold;
+}
+
+mat-header-cell {
+  color: #333;
+  font-size: 16px;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0; /* Light gray line */
+}
+
+/* Row styling */
+mat-row {
+  transition: background-color 0.2s ease-in-out;
+}
+
+mat-cell {
+  color: #444;
+  font-size: 15px;
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Hover effect */
+.clickable-row {
+  cursor: pointer;
+}
+
+.clickable-row:hover {
+  background-color: #f1f1f1; /* Softer hover color */
+}
+
+/* Reduce table border visibility */
+mat-table,
+mat-header-row,
+mat-row {
+  border: none;
 }
