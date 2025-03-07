@@ -1,0 +1,47 @@
+// src/styles/themes/theme.scss
+
+@import "~@angular/material/theming";
+
+// Define the custom theme colors (you can change these to match your app's design)
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, 500, 300, 700);
+$warn: mat-palette($mat-red);
+
+// Create a custom theme using the colors
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Define global typography and font settings
+$font-family: "Roboto", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.5;
+
+@include mat-core(); // Required for basic Material theming
+
+// Apply the theme to the application
+@include angular-material-theme($theme);
+
+// Global styles
+body {
+  font-family: $font-family;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  background-color: #f4f7f6; /* Light gray background */
+  color: #333; /* Dark text color */
+}
+
+.mat-typography {
+  font-family: $font-family;
+}
+
+// Custom button styles (Example)
+.mat-button {
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-transform: none;
+}
+
+.mat-button:hover {
+  background-color: mat-color($primary, 100);
+  color: #fff;
+}

@@ -8,17 +8,21 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { BookDialogComponent } from '../book-dialog/book-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog'; // import the dialog component
 
 @Component({
   selector: 'app-book-list',
-  standalone: true, // This tells Angular this is a standalone component
+  standalone: true,
   imports: [
     CommonModule,
     MatTableModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-  ], // Import CommonModule for ngFor
+    MatDialogModule,
+  ],
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
@@ -28,7 +32,11 @@ export class BookListComponent implements OnInit {
 
   private booksSubscription: Subscription | undefined;
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.booksSubscription = this.bookService.getBooks().subscribe((books) => {
@@ -47,6 +55,8 @@ export class BookListComponent implements OnInit {
   }
 
   onRowClicked(book: Book): void {
-    console.log(book);
+    this.dialog.open(BookDialogComponent, {
+      data: book, // Passing the selected book as data
+    });
   }
 }
