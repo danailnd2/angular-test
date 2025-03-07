@@ -1,20 +1,57 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs'; // You can still use RxJS Observables for asynchronous behavior
 
 @Injectable({
-  providedIn: 'root', // This makes the service globally available
+  providedIn: 'root',
 })
 export class HttpService {
   private apiUrl = 'http://localhost:5000/api/';
 
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
+  // POST request using fetch API
   post<T>(endpoint: string, body: T): Observable<T> {
-    return this.http.post<T>(`${this.apiUrl}${endpoint}`, body);
+    return new Observable((observer) => {
+      fetch(`${this.apiUrl}${endpoint}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
+    });
   }
 
+  // GET request using fetch API
   get<T>(endpoint: string): Observable<T> {
-    return this.http.get<T>(`${this.apiUrl}${endpoint}`);
+    return new Observable((observer) => {
+      fetch(`${this.apiUrl}${endpoint}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          observer.next(data);
+          observer.complete();
+        })
+        .catch((error) => {
+          observer.error(error);
+        });
+    });
   }
 }

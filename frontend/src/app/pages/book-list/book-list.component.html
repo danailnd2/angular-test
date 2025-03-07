@@ -1,11 +1,19 @@
-<div class="book-list">
-  <h2>Book List</h2>
-  <ul>
-    <li *ngFor="let book of books">
-      <strong>{{ book.title }}</strong> by {{ book.author }}
-    </li>
-  </ul>
+<div class="book-list mat-elevation-z8">
+  <div class="book-form">
+    <mat-table #table [dataSource]="books">
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.title }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="author">
+        <mat-header-cell *matHeaderCellDef> Author </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.author }} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+  </div>
 
-  <!-- Button to navigate to the Add Book page -->
-  <button (click)="goToAddPage()">Add Book</button>
+  <!-- Button outside the book-form -->
+  <button mat-fab (click)="goToAddPage()"><mat-icon>add</mat-icon></button>
 </div>

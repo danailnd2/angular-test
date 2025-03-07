@@ -4,16 +4,28 @@ import { Book } from '../../book.model';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common'; // Needed for ngFor
 import { Subscription } from 'rxjs';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-list',
   standalone: true, // This tells Angular this is a standalone component
-  imports: [CommonModule], // Import CommonModule for ngFor
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+  ], // Import CommonModule for ngFor
   templateUrl: './book-list.component.html',
   styleUrls: ['./book-list.component.scss'],
 })
 export class BookListComponent implements OnInit {
   books: Book[] = [];
+  displayedColumns = ['title', 'author'];
+
   private booksSubscription: Subscription | undefined;
 
   constructor(private bookService: BookService, private router: Router) {}

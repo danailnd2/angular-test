@@ -4,12 +4,12 @@ import { Book } from '../../book.model';
 import { Router } from '@angular/router'; // Import Router for navigation
 import { FormsModule } from '@angular/forms'; // Import FormsModule for ngModel
 
-// Angular Material Modules
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card'; // Import CommonModule for ngIf and ngFor
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-form',
@@ -21,6 +21,7 @@ import { MatCardModule } from '@angular/material/card'; // Import CommonModule f
     MatButtonModule,
     CommonModule,
     MatCardModule,
+    MatIconModule,
   ],
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.scss'],

@@ -1,0 +1,25 @@
+.book-list {
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh;
+}
+
+.book-form {
+  margin-bottom: 20px; /* Space between the form and the button */
+  width: 40%; /* Set the desired width of the form */
+  max-width: 900px; /* Optional: Set max width to avoid too wide */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for a lifted effect */
+  border-radius: 8px; /* Rounded corners for the "paper" effect */
+  display: flex;
+  flex-direction: column; /* Ensure that the content is aligned vertically */
+}
+
+.button {
+  margin-top: 20px; /* Space between the form and the button */
+  width: 40%; /* Same width as the form */
+  max-width: 900px; /* Match the form's max width */
+  align-self: center; /* Center the button horizontally */
+}
