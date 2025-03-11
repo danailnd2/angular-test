@@ -1,3 +1,5 @@
+@use "@angular/material" as mat;
+
 .book-list {
   display: flex;
   flex-direction: column;
@@ -8,14 +10,14 @@
 
 .book-form {
   margin-bottom: 15px;
-  width: 60%; /* Increase width for a better table layout */
+  width: 60%;
   max-width: 800px;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: var(--mat-sys-surface);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // For shadow, Material Design doesn't have a direct token
   border-radius: 8px;
   display: flex;
   flex-direction: column;
-  padding: 16px; /* Add padding for better spacing */
+  padding: 16px;
 }
 
 .button {
@@ -32,20 +34,20 @@ mat-table {
   overflow: hidden;
   border-collapse: separate;
   border-spacing: 0;
-  background: white;
+  background: var(--mat-sys-surface);
 }
 
 /* Header styling */
 mat-header-row {
-  background-color: #f8f9fa; /* Light gray background */
+  background-color: var(--mat-sys-primary-container);
   font-weight: bold;
 }
 
 mat-header-cell {
-  color: #333;
+  color: var(--mat-sys-on-primary-container);
   font-size: 16px;
   padding: 12px;
-  border-bottom: 1px solid #e0e0e0; /* Light gray line */
+  border-bottom: 1px solid var(--mat-sys-outline);
 }
 
 /* Row styling */
@@ -54,10 +56,10 @@ mat-row {
 }
 
 mat-cell {
-  color: #444;
+  color: var(--mat-sys-on-surface);
   font-size: 15px;
   padding: 12px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid var(--mat-sys-outline);
 }
 
 /* Hover effect */
@@ -66,7 +68,7 @@ mat-cell {
 }
 
 .clickable-row:hover {
-  background-color: #f1f1f1; /* Softer hover color */
+  background-color: var(--mat-sys-secondary-container);
 }
 
 /* Reduce table border visibility */

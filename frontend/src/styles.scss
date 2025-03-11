@@ -1,18 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
 
+/* Ensures full-page layout */
 html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: #f5f5f5; /* Light grey color */
+  background-color: var(--mat-sys-background); /* Uses theme variable */
 }
 
+/* Global table background */
 :root {
-  --mat-table-background-color: white; /* Set the table's background to white */
+  --mat-table-background-color: var(
+    --mat-sys-surface
+  ); /* Uses theme's surface color */
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
