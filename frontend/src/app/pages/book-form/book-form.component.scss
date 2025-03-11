@@ -1,13 +1,4 @@
-/* Ensure html and body take full height */
-html,
-body {
-  height: 100%;
-  margin: 0;
-}
-
-body {
-  background-color: #f0f0f0; /* Optional background for contrast */
-}
+@use "@angular/material" as mat;
 
 /* Center the wrapper div using flexbox */
 .wrapper {
@@ -23,7 +14,8 @@ body {
   width: 40%; /* 40% of the screen width */
   max-width: 600px; /* Optional: To avoid the card getting too wide */
   padding: 20px;
-  background-color: white;
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for a lifted effect */
   border-radius: 8px; /* Rounded corners for the card */
   display: flex;
