@@ -13,3 +13,6 @@ body {
 :root {
   --mat-table-background-color: white; /* Set the table's background to white */
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

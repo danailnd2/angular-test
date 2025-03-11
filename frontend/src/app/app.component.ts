@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { RouterModule } from '@angular/router'; // Import RouterModule
 
 @Component({
@@ -9,5 +9,18 @@ import { RouterModule } from '@angular/router'; // Import RouterModule
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  // Your app component logic here
+  isDarkMode = false;
+
+  constructor(private renderer: Renderer2) {}
+
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    const bodyElement = document.body;
+
+    if (this.isDarkMode) {
+      this.renderer.addClass(bodyElement, 'dark-theme'); // Add dark mode class
+    } else {
+      this.renderer.removeClass(bodyElement, 'dark-theme'); // Remove dark mode class
+    }
+  }
 }
