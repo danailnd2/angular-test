@@ -1,70 +1,7 @@
 @use "@angular/material" as mat;
 
-/* Center the wrapper div using flexbox */
-.wrapper {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-}
-
-/* Form card styles */
-.book-form {
-  margin-bottom: 200px;
-  width: 40%; /* 40% of the screen width */
-  max-width: 600px; /* Optional: To avoid the card getting too wide */
-  padding: 20px;
-  background-color: var(--mat-sys-background);
-  color: var(--mat-sys-on-background);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow for a lifted effect */
-  border-radius: 8px; /* Rounded corners for the card */
-  display: flex;
-  flex-direction: column;
-}
-
 .card-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
-}
-
-/* Layout for the form fields */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns for inputs */
-  gap: 20px; /* Add space between inputs */
-  margin-bottom: 20px;
-
-  /* Ensuring form fields occupy the full width of their grid cells */
-  mat-form-field {
-    width: 100%;
-  }
-
-  /* Make checkbox sit beside Number of Pages */
-  mat-checkbox {
-    grid-column: span 1; /* Allow checkbox to sit in the second column */
-  }
-
-  /* Make sure "Has Pictures" is aligned to the right of the second column */
-  mat-form-field:last-of-type {
-    grid-column: 1 / 2; /* Ensure it takes up the first column in its row */
-  }
-}
-
-.full-width {
-  width: 100%; /* Ensure form fields take full width */
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.book-form-input {
-  width: 100%;
-}
-
-* {
-  box-sizing: border-box;
 }

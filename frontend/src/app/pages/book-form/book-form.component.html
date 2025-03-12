@@ -1,51 +1,42 @@
-<div class="wrapper">
-  <mat-card class="book-form">
+<div class="centered-card">
+  <mat-card>
     <h2 class="card-title">Add a Book</h2>
     <form (ngSubmit)="addBook()">
       <div class="form-grid">
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="fill">
           <mat-label>Book Name</mat-label>
           <input
-            class="book-form-input"
             matInput
             type="text"
-            id="bookName"
             [(ngModel)]="bookName"
             name="bookName"
             required
           />
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="full-width">
+        <mat-form-field appearance="fill">
           <mat-label>Author</mat-label>
           <input
-            class="book-form-input"
             matInput
             type="text"
-            id="bookAuthor"
             [(ngModel)]="bookAuthor"
             name="bookAuthor"
             required
           />
         </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width">
+
+        <mat-form-field appearance="fill">
           <mat-label>Number of Pages</mat-label>
           <input
-            class="book-form-input"
             matInput
             type="number"
-            id="bookPages"
             [(ngModel)]="bookPages"
             name="bookPages"
             required
           />
         </mat-form-field>
 
-        <mat-checkbox
-          id="bookHasPictures"
-          [(ngModel)]="bookHasPictures"
-          name="bookHasPictures"
-        >
+        <mat-checkbox [(ngModel)]="bookHasPictures" name="bookHasPictures">
           Has pictures
         </mat-checkbox>
       </div>

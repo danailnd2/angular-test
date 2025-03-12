@@ -24,7 +24,16 @@ body.dark-theme {
   );
 }
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure the height is fully controlled */
+}
+
 body {
+  overflow: hidden; /* Prevent unwanted scrolling */
+  width: 100%;
   background: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
 }

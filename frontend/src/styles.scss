@@ -1,17 +1,68 @@
 @use "@angular/material" as mat;
 
-/* Ensures full-page layout */
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: var(--mat-sys-background); /* Uses theme variable */
+/* General Reset and Box Sizing */
+
+/* Centralized Wrapper - Reusable Centering */
+.centered-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  width: 100%; /* Ensure full width */
+  overflow: hidden; /* Prevent any content from overflowing */
+  background-color: var(--mat-sys-background);
 }
 
-/* Global table background */
-:root {
-  --mat-table-background-color: var(
-    --mat-sys-surface
-  ); /* Uses theme's surface color */
+/* Main app container */
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--mat-sys-background);
+  color: var(--mat-sys-on-background);
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  height: 100%; /* Ensure no overflow on the main container */
+  position: relative; /* Help with layout consistency */
+}
+
+/* Global Card Style */
+.mat-card {
+  width: 40%; /* 40% of the screen width */
+  max-width: 600px; /* Prevent excessive width */
+  padding: 20px;
+  background-color: var(--mat-sys-outline);
+  color: var(--mat-sys-on-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow effect */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Prevent card content from overflowing */
+}
+
+/* Global Form Styles */
+.mat-form-field {
+  width: 100%;
+}
+
+/* Global Grid Layout for Forms */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 20px;
+  margin-bottom: 20px;
+
+  /* Ensure fields fill their grid cells */
+  mat-form-field {
+    width: 100%;
+  }
+
+  /* Place checkbox next to the last input field */
+  mat-checkbox {
+    grid-column: span 1;
+  }
+}
+
+/* Button Grouping */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 }
